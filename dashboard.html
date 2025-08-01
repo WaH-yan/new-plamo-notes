@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plamo Notes - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-app">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>Model Kit Manager</h1>
+                <input type="text" id="searchInput" placeholder="Search projects by name or tag..." class="search-bar">
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item" data-page="portfolio"><i class="fas fa-home"></i> Portfolio</a>
+                <a href="#" class="nav-item" data-page="new-project"><i class="fas fa-plus"></i> New Project</a>
+                <a href="#" class="nav-item" data-page="new-event"><i class="fas fa-calendar-plus"></i> New Event</a>
+                <a href="#" class="nav-item" data-page="calendar"><i class="fas fa-calendar"></i> Calendar</a>
+                <a href="#" class="nav-item" data-page="account"><i class="fas fa-user"></i> Account Settings</a>
+            </nav>
+            <div class="quick-stats">
+                <h3>Quick Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="activeCount">0</div>
+                        <div class="stat-label">Active</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="completeCount">0</div>
+                        <div class="stat-label">Complete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="portfolioPage" class="page">
+                <div class="page-header">
+                    <h1>Project Portfolio</h1>
+                    <p>Your model kit building journey starts here</p>
+                </div>
+                <div id="portfolioGrid" class="portfolio-grid"></div>
+            </div>
+
+            <div id="newProjectPage" class="page">
+                <div class="page-header">
+                    <h1>Create New Project</h1>
+                    <p>Add a new model kit to your portfolio</p>
+                </div>
+                <div class="form-container">
+                    <form id="newProjectForm" enctype="multipart/form-data" class="project-form">
+                        <div class="form-group">
+                            <label for="projectName">Project Name</label>
+                            <input type="text" id="projectName" name="projectName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDescription">Description</label>
+                            <textarea id="projectDescription" name="projectDescription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectCategory">Category</label>
+                            <select id="projectCategory" name="projectCategory" required>
+                                <option value="" disabled selected>Choose category</option>
+                                <option value="Gundam">Gundam</option>
+                                <option value="Military Vehicle">Military Vehicle</option>
+                                <option value="Aircraft">Aircraft</option>
+                                <option value="Ship">Ship</option>
+                                <option value="Car">Car</option>
+                                <option value="Motorcycle">Motorcycle</option>
+                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="planToComplete">Plan to Complete Date</label>
+                            <input type="date" id="planToComplete" name="planToComplete">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectImages">Project Images</label>
+                            <div class="image-upload">
+                                <input type="file" id="projectImages" name="projectImages" multiple accept="image/*">
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload images (multiple allowed)</p>
+                                </div>
+                                <div id="imagePreview" class="image-preview-grid" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Completion Criteria</label>
+                            <div class="criteria-section">
+                                <div id="criteriaList" class="criteria-list"></div>
+                                <div class="add-criteria">
+                                    <input type="text" id="newCriteria" class="criteria-input">
+                                    <button type="button" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <div class="tags-input">
+                                <div id="tagsList" class="tags-list"></div>
+                                <input type="text" id="tagsInput" placeholder="Type and press Enter to add tags">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="app.showPage('portfolio')">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Project</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="newEventPage" class="page">
+                <div class="page-header">
+                    <h1>Create New Event</h1>
+                    <p>Add events to your calendar</p>
+                </div>
+                <div class="form-container">
+                    <form id="newEventForm" class="event-form">
+                        <div class="form-group">
+                            <label for="eventName">Event Name</label>
+                            <input type="text" id="eventName" name="eventName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDate">Event Date</label>
+                            <input type="date" id="eventDate" name="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventLocation">Location</label>
+                            <input type="text" id="eventLocation" name="eventLocation">
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDescription">Description</label>
+                            <textarea id="eventDescription" name="eventDescription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventPlan">Event Plan</label>
+                            <textarea id="eventPlan" name="eventPlan"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="app.showPage('calendar')">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="calendarPage" class="page">
+                <div class="page-header">
+                    <h1>Calendar</h1>
+                    <p>Schedule and track your model kit building activities</p>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-main">
+                        <div class="calendar-header">
+                            <button class="nav-btn" onclick="app.changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                            <h2 id="currentMonth"></h2>
+                            <button class="nav-btn" onclick="app.changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div id="calendarGrid" class="calendar-grid"></div>
+                    </div>
+                    <div class="calendar-sidebar">
+                        <div class="upcoming-events">
+                            <h3>Upcoming Events</h3>
+                            <div id="upcomingEventsList" class="events-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="accountPage" class="page">
+                <div class="page-header">
+                    <h1>Account Settings</h1>
+                    <p>Manage your personal information and account preferences</p>
+                </div>
+                <div class="account-container">
+                    <div class="account-card">
+                        <div class="account-header">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <h2 id="userDisplayName">User Name</h2>
+                                <p id="userEmail">user@example.com</p>
+                                <span id="userBadge" class="user-badge">Member</span>
+                            </div>
+                        </div>
+                        <div class="account-sections">
+                            <div class="account-section">
+                                <h3>Personal Information</h3>
+                                <form id="personalInfoForm" class="account-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="fullName">Full Name</label>
+                                            <input type="text" id="fullName" name="fullName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" id="username" name="username">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emailAddress">Email Address</label>
+                                        <input type="email" id="emailAddress" name="emailAddress">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-primary">Update Information</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="account-section">
+                                <h3>Change Password</h3>
+                                <form id="passwordForm" class="account-form">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Current Password</label>
+                                        <input type="password" id="currentPassword" name="currentPassword">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="newPassword">New Password</label>
+                                            <input type="password" id="newPassword" name="newPassword">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <input type="password" id="confirmPassword" name="confirmPassword">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-primary">Change Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="account-section danger-zone">
+                                <h3>Account Actions</h3>
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-secondary" onclick="app.signOut()">
+                                        <i class="fas fa-sign-out-alt"></i> Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projectDetailModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalProjectName"></h2>
+                        <button type="button" class="close-modal" onclick="app.closeProjectDetail()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="project-detail-content">
+                            <div class="project-image" id="modalProjectImage"></div>
+                            <div>
+                                <div class="info-section">
+                                    <h3>Description</h3>
+                                    <p id="modalProjectDescription"></p>
+                                </div>
+                                <div class="info-section">
+                                    <h3>Progress</h3>
+                                    <div class="progress-bar">
+                                        <div id="modalProgressFill" class="progress-fill"></div>
+                                        <span id="modalProgressText" class="progress-text">0%</span>
+                                    </div>
+                                </div>
+                                <div class="info-section">
+                                    <h3>Completion Criteria</h3>
+                                    <div id="modalCriteriaList" class="criteria-checklist"></div>
+                                </div>
+                                <div class="info-section">
+                                    <h3>Logbook</h3>
+                                    <div class="logbook-section">
+                                        <div class="add-logbook-entry">
+                                            <form id="logbookForm" class="logbook-form">
+                                                <input type="date" id="logbookDate" class="logbook-date">
+                                                <textarea id="logbookEntry" class="logbook-textarea" placeholder="Enter your progress notes..."></textarea>
+                                                <button type="submit" class="add-entry-btn">
+                                                    <i class="fas fa-plus"></i> Add Entry
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div id="modalLogbook" class="logbook-entries"></div>
+                                    </div>
+                                </div>
+                                <div class="info-section">
+                                    <h3>Details</h3>
+                                    <div class="project-details">
+                                        <span class="detail-item">Category: <span id="modalProjectCategory"></span></span>
+                                        <span class="detail-item">Status: <span id="modalProjectStatus"></span></span>
+                                        <span class="detail-item">Created: <span id="modalProjectDate"></span></span>
+                                    </div>
+                                </div>
+                                <div class="info-section">
+                                    <h3>Tags</h3>
+                                    <div id="modalProjectTags" class="project-tags"></div>
+                                </div>
+                                <div id="modalProjectActions"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="eventDetailModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalEventTitle"></h2>
+                        <button type="button" class="close-modal" onclick="app.closeEventDetail()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="info-section">
+                            <h3>Date</h3>
+                            <p id="modalEventDate"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Location</h3>
+                            <p id="modalEventLocation"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Description</h3>
+                            <p id="modalEventDescription"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Plan</h3>
+                            <p id="modalEventPlan"></p>
+                        </div>
+                        <div id="modalEventActions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

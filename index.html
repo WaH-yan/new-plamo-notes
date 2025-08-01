@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Kit Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="landing-styles.css">
+</head>
+<body>
+    <header class="landing-header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                Plamo Notes
+            </div>
+            <nav class="landing-nav">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#signin" class="signin-link">Sign In</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Organise your model kit backlog</h1>
+                    <p class="hero-subtitle"></p>
+                    <div class="features-preview">
+                        <div class="feature-item">
+                            <i class="fas fa-cubes"></i>
+                            <span>Project Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Calendar Planning</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress Tracking</span>
+                        </div>
+                    </div>
+                    <button class="cta-button" onclick="showSignInModal()">Get Started Today</button>
+                </div>
+                <div class="hero-visual">
+                    <div class="mock-dashboard">
+                        <div class="mock-header">
+                            <div class="mock-nav">
+                                <div class="nav-dot"></div>
+                                <div class="nav-dot active"></div>
+                                <div class="nav-dot"></div>
+                            </div>
+                        </div>
+                        <div class="mock-content">
+                            <div class="mock-project">
+                                <div class="project-image"></div>
+                                <div class="project-info">
+                                    <div class="project-title"></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mock-project">
+                                <div class="project-image"></div>
+                                <div class="project-info">
+                                    <div class="project-title"></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Everything You Need to Manage Your Model Kits</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>Project Organization</h3>
+                    <p>Create detailed project profiles with categories, images, completion criteria, and progress tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <h3>Build Logbook</h3>
+                    <p>Document your building journey with timestamped entries, photos, and progress notes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Event Planning</h3>
+                    <p>Schedule competitions, club meetings, and deadlines with integrated calendar management.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Progress Analytics</h3>
+                    <p>Visual progress tracking with completion percentages and project status overview.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                    <h3>Smart Categorization</h3>
+                    <p>Organize projects by type, scale, manufacturer, or custom tags for easy discovery.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Responsive Design</h3>
+                    <p>Access your projects anywhere with a fully responsive design that works on all devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Built by Enthusiasts, for Enthusiasts</h2>
+                    <p>Nah I build this website for my own purpose, to manage my own projects</p>
+                    <p>Follow my insta account: wah.plamo </p>
+                    
+                </div>
+                <div class="about-image">
+                    <div class="model-showcase">
+                        <div class="model-item gundam"></div>
+                        <div class="model-item tank"></div>
+                        <div class="model-item aircraft"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Model Kit Manager</h4>
+                    <p>Empowering model kit enthusiasts worldwide to build, track, and showcase their passion projects.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#signin">Sign In</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Model Kit Manager. Built with passion for the model building community.</p>
+                <a href="#" onclick="temporaryDashboardAccess()" class="temp-access-link">Temporary Dashboard Access</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="signInModal">
+        <div class="signin-modal">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="close-modal" onclick="closeSignInModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="signin-form" id="signInForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="rememberMe">
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="signin-button">Sign In</button>
+                </form>
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#" onclick="showSignUpModal()">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="signin-modal" id="signUpModal" style="display: none;">
+            <div class="modal-body">
+                <form class="signin-form" id="createAccountForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Password</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="newPassword" required>
+                    </div>
+                    <button type="submit" class="signin-button">Create Account</button>
+                </form>
+                <div class="signup-link">
+                    <p>Already have an account? <a href="#" onclick="showSignInModal()">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="landing.js"></script>
+</body>
+</html>
