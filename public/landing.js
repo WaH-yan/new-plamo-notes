@@ -245,7 +245,7 @@ class LandingPageManager {
         submitButton.disabled = true;
 
         // Send API request
-        fetch('/api/signup', {
+        fetch('/api/signup', { // Updated endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -253,7 +253,7 @@ class LandingPageManager {
             body: JSON.stringify({
                 email,
                 username,
-                fullName: name, // Update to match the backend expected parameter
+                fullName,
                 password
             })
         })

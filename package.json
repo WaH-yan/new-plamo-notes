@@ -1,0 +1,30 @@
+{
+  "name": "plamo-notes",
+  "version": "1.0.0",
+  "description": "Model Kit Manager Application",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@netlify/neon": "^0.1.0",
+    "bcryptjs": "^2.4.3",
+    "next": "^13.5.11",
+    "pg": "^8.16.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "main": "data.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WaH-yan/new-plamo-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WaH-yan/new-plamo-notes/issues"
+  },
+  "homepage": "https://github.com/WaH-yan/new-plamo-notes#readme"
+}
